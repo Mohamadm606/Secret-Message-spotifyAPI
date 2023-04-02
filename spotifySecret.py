@@ -99,7 +99,9 @@ while True:
             print()
             iter += 1
             
+
         while True:
+            
             songSelection = input("Enter a song number to view album art associated with it!\n" + 
                               "Enter \"x\" To add songs to a playlist on your account!\n" + 
                               "Enter \"z\" To exit\n")
@@ -114,24 +116,25 @@ while True:
                 print()
                 break
         
-            elif songSelection.isnumeric():
+            if songSelection.isnumeric():
                 if int(songSelection) < 1 or int(songSelection) > len(trackIDs):
                     print("invalid song number, please try again\n")
-                    
                 else:
                     songSelection = int(songSelection) - 1
                     trackurl = trackArt[songSelection]
-                    webbrowser.open(trackurl)    
-                    break
-            
-            else:
+                    webbrowser.open(trackurl)
+                    continue
+                    
+            if songSelection == "z":
                 break
-        
-        choice = input("\nInput 0: To create another playlist\nInput 1: To exit\n")
+                
+    choice = input("\nInput 0: To create another playlist\nInput 1: To exit\n")
         
     # Break loop end program
     if choice == "1":
         break
+    
+    
 print()
 print("Bye!")
 print()
